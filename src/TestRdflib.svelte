@@ -13,12 +13,24 @@ const rdf = {
 `
 };
 
-console.log('Loading rdflib');
-// TODO BUG: returns undefined
-const store = rdflibx.parse(rdf.body, rdflibx.graph(), rdf.uri, rdf.mimeType);
-console.log(store);
+console.log('rdflib...');
+
+let newTriples = [];
+$: triples = newTriples.map(d => Object.create(d));
+
+const g = rdflibx.graph();
+const store = rdflibx.parse(rdf.body, g, rdf.uri, rdf.mimeType);
+
+g.match().forEach(quad => {
+    newTriples.push(quad);
+});
 
 </script>
 
-<div><h2>Rdflib OK</h2>
+<div><h2>rdflib</h2>
+<ul>
+	{#each triples as triple, i}
+		<li>{triple}</li>
+	{/each}
+</ul>
 </div>
