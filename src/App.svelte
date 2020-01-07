@@ -1,8 +1,8 @@
 <script>
-import TestRdfjs from "./TestRdfjs.svelte";
 import TestRdflib from "./TestRdflib.svelte";
-import TestLDFlex from "./TestLDFlex.svelte";
-import TestGraphy from "./TestGraphy.svelte";
+// import TestLDFlex from "./TestLDFlex.svelte";
+// import TestGraphy from "./TestGraphy.svelte";
+import TestRdfjs from "./TestRdfjs.svelte";
 
 </script>
 
@@ -13,7 +13,7 @@ import TestGraphy from "./TestGraphy.svelte";
 </style>
 
 <h1>Svelte with RDF using Webpack</h1>
-<TestRdfjs></TestRdfjs>
 <TestRdflib></TestRdflib>
-<TestLDFlex></TestLDFlex>
-<TestGraphy></TestGraphy><!-- Not working in Firefox, ok in Chromium -->
+<!-- <TestLDFlex></TestLDFlex> -->
+<!-- <TestGraphy></TestGraphy><!--Not working in Firefox, ok in Chromium -->
+<TestRdfjs></TestRdfjs>
