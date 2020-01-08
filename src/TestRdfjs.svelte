@@ -4,8 +4,7 @@ import fetch from '@rdfjs/fetch';
 const label = 'http://www.w3.org/2000/01/rdf-schema#label'
 
 console.log('Rdfjs...');
-let newTriples = [];
-$: triples = newTriples.map(d => Object.create(d));
+$: triples = [];
 
 const formats = require('@rdfjs/formats-common')
 const Readable = require('stream').Readable
@@ -26,8 +25,8 @@ const output = formats.parsers.import('text/turtle', input)
 
 output.on('data', quad => {
   console.log(`HEY quad: ${quad.subject.value} - ${quad.predicate.value} - ${quad.object.value}`)
-  newTriples.push(quad);
-  newTriples = newTriples;
+  triples.push(quad);
+  triples = triples;
 })
 
 output.on('prefix', (prefix, ns) => {
