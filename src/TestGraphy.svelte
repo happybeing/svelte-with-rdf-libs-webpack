@@ -5,8 +5,7 @@ const readTtl = require('@graphy/content.ttl.read');
 
 console.log('Graphy...');
 
-let newTriples = [];
-$: triples = newTriples.map(d => Object.create(d));
+$: triples = [];
 
 readTtl(`
     @prefix foaf: <http://xmlns.com/foaf/0.1/> .
@@ -16,8 +15,8 @@ readTtl(`
 `, {
     data(y_quad) {
         console.log(JSON.stringify(y_quad));
-        newTriples.push(y_quad);
-        newTriples = newTriples;
+        triples.push(y_quad);
+        triples = triples;
     },
 
     eof(h_prefixes) {
