@@ -1,4 +1,5 @@
 <script>
+import { onMount } from 'svelte';
 // import * as rdflibx from 'rdflib';
 const rdflibx = require('rdflib');
 
@@ -13,16 +14,17 @@ const rdf = {
 `
 };
 
-console.log('rdflib...');
+$: triples = [];
 
-let newTriples = [];
-$: triples = newTriples.map(d => Object.create(d));
+onMount (() => {
+  console.log('rdflib...');
+  const g = rdflibx.graph();
+  const store = rdflibx.parse(rdf.body, g, rdf.uri, rdf.mimeType);
 
-const g = rdflibx.graph();
-const store = rdflibx.parse(rdf.body, g, rdf.uri, rdf.mimeType);
-
-g.match().forEach(quad => {
-    newTriples.push(quad);
+  g.match().forEach(quad => {
+      triples.push(quad);
+      triples = triples;
+  });
 });
 
 </script>
