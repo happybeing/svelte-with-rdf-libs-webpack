@@ -23,30 +23,30 @@ console.log('LDFlex...');
 const path = new PathFactory({ context, queryEngine });
 
 const ruben = path.create({ subject: namedNode('https://ruben.verborgh.org/profile/#me') });
-showPerson(ruben);
+// showPerson(ruben);
 
-async function showPerson(person) {
-  console.log(`This person is ${await person.name}`);
+// async function showPerson(person) {
+//   console.log(`This person is ${await person.name}`);
 
-  console.log(`${await person.givenName} is interested in:`);
-  for await (const name of person.interest.label)
-    console.log(`- ${name}`);
+//   console.log(`${await person.givenName} is interested in:`);
+//   for await (const name of person.interest.label)
+//     console.log(`- ${name}`);
 
-  console.log(`${await person.givenName} is friends with:`);
-  for await (const name of person.friends.givenName)
-    console.log(`- ${name}`);
-}
+//   console.log(`${await person.givenName} is friends with:`);
+//   for await (const name of person.friends.givenName)
+//     console.log(`- ${name}`);
+// }
 
 </script>
 
 <div><h2>Comunica and LDFlex</h2>
 {#await ruben.name}
   <p>Comunica loading...</p>
-{:then}
+{:then person}
   <p>Comunica done. LDFlex...</p>
   <!--  I'm not sure how to get ruben.name here.
         It shows undefined despite above #await! -->
-  <p>ruben: {ruben} and ruben.name: {ruben.name}</p>
+  <p>Person: {person} and Person name: {person.name}</p>
 {:catch error}
   <p style="color: red">{error.message}</p>
 {/await}
