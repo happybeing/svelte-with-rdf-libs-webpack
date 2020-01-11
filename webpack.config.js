@@ -1,5 +1,4 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const BabelEnginePlugin = require('babel-engine-plugin');
 const path = require('path');
 
 const mode = process.env.NODE_ENV || 'development';
@@ -15,7 +14,8 @@ module.exports = {
 		},
 		extensions: ['.mjs', '.js', '.svelte'],
 		mainFields: ['svelte', 'browser', 'module', 'main']
-	},
+  },
+  // Solves problem, import of rdflib.js
   externals: {
     'node-fetch': 'fetch',
     'solid-auth-cli': 'null',
