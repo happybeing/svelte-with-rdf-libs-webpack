@@ -1,6 +1,6 @@
 <script>
 import { onMount } from 'svelte';
-// import * as rdflibx from 'rdflib';
+
 const rdflibx = require('rdflib');
 
 const rdf = {

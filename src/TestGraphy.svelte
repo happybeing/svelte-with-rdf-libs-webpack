@@ -1,6 +1,4 @@
 <script>
-// 40K overhead:
-// import * as readTtl from "@graphy/content.ttl.read";
 const readTtl = require('@graphy/content.ttl.read');
 
 console.log('Graphy...');
